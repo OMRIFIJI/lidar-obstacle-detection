@@ -18,7 +18,8 @@ void ObstacleDetectionNode::_obstacle_detection_callback(
 	this->_find_obstacle_points(src_cloud);
 }
 
-void _obstacle_detection_callback(const pcl::PointCloud<PointT> &src_cloud) {
+void ObstacleDetectionNode::_find_obstacle_points(
+	const pcl::PointCloud<PointT> &src_cloud) {
 	pcl::KdTreeFLANN<PointT> kdtree;
 	kdtree.setInputCloud(src_cloud);
 
@@ -40,11 +41,16 @@ void _obstacle_detection_callback(const pcl::PointCloud<PointT> &src_cloud) {
 		if (kdtree.radiusSearch(obstacle_suspect, radius, pointIdxRadiusSearch,
 								pointRadiusSquaredDistance) > 0) {
 			for (std::size_t i = 0; i < pointIdxRadiusSearch.size(); i++) {
-				_cloud_angle_handler.
+				_cloud_angle_handler.calculate_angle(
+					obstacle_suspect,
+					src_cloud.points[pointIdxRadiusSearch[i]]);
 			}
 		}
 
 		// Check thrsh
+        if (!_cloud_angle_handler.is_above_thrsh()){
+
+        }
 		pointIdxRadiusSearch.clear();
 		pointRadiusSquaredDistance.clear();
 	}
