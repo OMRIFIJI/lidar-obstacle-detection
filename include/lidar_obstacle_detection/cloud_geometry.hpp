@@ -8,7 +8,6 @@ namespace cloud_geometry {
 class CloudAngleHandler {
   public:
 	CloudAngleHandler(float angle_thrsh);
-	CloudAngleHandler();
     void reset_max_angle();
     void calculate_angle(PointT suspect_point, PointT neighbour_point);
     bool is_above_thrsh();

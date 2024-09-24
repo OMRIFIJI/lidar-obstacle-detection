@@ -1,8 +1,22 @@
 <launch>
+    <arg name="rviz" default="true" />
+    
     <node
         pkg="lidar_obstacle_detection"
         name="lidar_obstacle_detection_node"
         type="lidar_obstacle_detection_node"
         output="screen"
     />
+    
+    <!-- init points and RANSAC --> 
+    <group if="$(arg rviz)">
+        <node 
+            launch-prefix="nice" 
+            pkg="rviz" 
+            type="rviz" 
+            name="rviz_obstacles" 
+            args="-d $(find lidar_obstacle_detection)/rviz/obstacle_visualization.rviz" 
+        />
+    </group>
+
 </launch>
