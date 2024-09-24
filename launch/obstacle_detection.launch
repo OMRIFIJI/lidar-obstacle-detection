@@ -1,0 +1,8 @@
+<launch>
+    <node
+        pkg="lidar_obstacle_detection"
+        name="lidar_obstacle_detection_node"
+        type="lidar_obstacle_detection_node"
+        output="screen"
+    />
+</launch>
