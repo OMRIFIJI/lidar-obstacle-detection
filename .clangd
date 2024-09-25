@@ -1,9 +1,0 @@
-CompileFlags:
-  Add: [
-    -I/home/omri/Work/ROS/clang_includes/ros/include, 
-    -I/home/omri/Work/ROS/clang_includes/catkin_ws/include,
-    -I/home/omri/Work/ROS/catkin_ws/src/lidar_obstacle_detection/include,
-    -I/home/omri/Work/ROS/clang_includes/pcl/include,
-    -I/home/omri/Work/ROS/clang_includes/Eigen/include,
-    -I/home/omri/Work/ROS/clang_includes/flann/include,
-  ]
