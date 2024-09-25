@@ -1,8 +1,8 @@
 <launch>
     <arg name="rviz" default="true" />
-    <arg name="obstacle_angle_thrsh" default="0.785398" />
+    <arg name="obstacle_angle_thrsh" default="1.0471" />
     <arg name="obstacle_sector_angle" default="0.523598" />
-    <arg name="obstacle_sector_radius" default="3" />
+    <arg name="obstacle_sector_radius" default="9.0" />
     
     <node
         pkg="lidar_obstacle_detection"

@@ -13,7 +13,7 @@ ObstacleDetectionNode::ObstacleDetectionNode(ros::NodeHandle node_handle, float 
 	_dangerous_obstacle_points->header.frame_id = _lidar_frame_id;
 
 	node_handle.param<float>("obstacle_sector_angle", _obstacle_sector_angle, 0.523598);
-	node_handle.param<float>("obstacle_sector_radius", _obstacle_sector_radius, 3);
+	node_handle.param<float>("obstacle_sector_radius", _obstacle_sector_radius, 9);
 	std::cout << "Param angle thrsh:" << angle_thrsh << std::endl;
 	std::cout << "Param sector angle:" << _obstacle_sector_angle << std::endl;
 	std::cout << "Param sector radius:" << _obstacle_sector_radius << std::endl;

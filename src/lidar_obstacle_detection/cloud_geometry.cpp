@@ -36,7 +36,7 @@ bool is_inside_sector(PointT point, float sector_angle, float sector_radius) {
 	float norm = radius_vec_2d_norm(point);
 	float angle;
 	// Also prevents zero division
-	if (norm < sector_radius)
+	if (norm > sector_radius)
 		return 0;
 
 	angle = acos(project_to_x(point) / norm);
