@@ -1,14 +1,15 @@
 <launch>
-    <arg name="rviz" default="true" />
+    <arg name="rviz" default="false" />
+    <arg name="obstacle_angle_thrsh" default="0.785398" />
     
     <node
         pkg="lidar_obstacle_detection"
         name="lidar_obstacle_detection_node"
         type="lidar_obstacle_detection_node"
-        output="screen"
-    />
+        output="screen">
+    <param name="obstacle_angle_thrsh" type="double" value="$(arg obstacle_angle_thrsh)"/>
+    </node>
     
-    <!-- init points and RANSAC --> 
     <group if="$(arg rviz)">
         <node 
             launch-prefix="nice" 

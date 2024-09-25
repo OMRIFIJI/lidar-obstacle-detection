@@ -14,22 +14,24 @@
 
 class ObstacleDetectionNode {
   public:
-	ObstacleDetectionNode(int argc, char **argv);
+	ObstacleDetectionNode(ros::NodeHandle node_handle, float angle_thrsh);
 
   private:
 	ros::Publisher _obstacle_pub;
 	ros::Subscriber _lidar_sub;
 
-	float _angle_thrsh;
 	cloud_geometry::CloudAngleHandler _cloud_angle_handler;
 
 	std::uint64_t _cloud_ts;
     std::string _lidar_frame_id;
 	pcl::PointCloud<PointT>::Ptr _obstacle_points;
 
+	pcl::KdTreeFLANN<PointT> _kdtree;
+	std::vector<int> _pointIdxRadiusSearch;
+	std::vector<float> _pointRadiusSquaredDistance;
+
 	void _obstacle_detection_callback(const pcl::PointCloud<PointT> &src_cloud);
-	void
-	_find_obstacle_points(const pcl::PointCloud<PointT>::ConstPtr src_cloud);
+	void _find_obstacle_points(const pcl::PointCloud<PointT>::ConstPtr src_cloud);
 	void _publish_obstacles();
 };
 

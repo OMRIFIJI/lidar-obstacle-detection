@@ -18,10 +18,10 @@ void CloudAngleHandler::calculate_angle(PointT suspect_point,
 	float cathetus1 = pcl::euclideanDistance(suspect_point, orthogonal_point);
 	float cathetus2 = pcl::euclideanDistance(neighbour_point, orthogonal_point);
 
-    // Points too close (prevents 0 division)
-    if (cathetus1 < 1e-3){
-        return;
-    }
+	// Points too close (prevents 0 division)
+	if (cathetus1 < 1e-3) {
+		return;
+	}
 	_suspect_point_angle = atan(cathetus2 / cathetus1);
 
 	if (_suspect_point_angle_max < _suspect_point_angle)
@@ -29,6 +29,5 @@ void CloudAngleHandler::calculate_angle(PointT suspect_point,
 }
 
 bool CloudAngleHandler::is_above_thrsh() {
-
 	return _suspect_point_angle_max > _angle_thrsh;
 }
