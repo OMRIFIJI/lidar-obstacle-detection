@@ -1,6 +1,8 @@
 <launch>
-    <arg name="rviz" default="false" />
+    <arg name="rviz" default="true" />
     <arg name="obstacle_angle_thrsh" default="0.785398" />
+    <arg name="obstacle_sector_angle" default="0.523598" />
+    <arg name="obstacle_sector_radius" default="3" />
     
     <node
         pkg="lidar_obstacle_detection"
@@ -8,6 +10,8 @@
         type="lidar_obstacle_detection_node"
         output="screen">
     <param name="obstacle_angle_thrsh" type="double" value="$(arg obstacle_angle_thrsh)"/>
+    <param name="obstacle_sector_angle" type="double" value="$(arg obstacle_sector_angle)"/>
+    <param name="obstacle_sector_radius" type="double" value="$(arg obstacle_sector_radius)"/>
     </node>
     
     <group if="$(arg rviz)">

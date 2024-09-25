@@ -23,8 +23,8 @@ include_directories(${catkin_INCLUDE_DIRS})
 
 add_executable(
     lidar_obstacle_detection_node
-    src/lidar_obstacle_detection/lidar_obstacle_detection_node.cpp
-    src/lidar_obstacle_detection/lidar_obstacle_detection.cpp
     src/lidar_obstacle_detection/cloud_geometry.cpp
+    src/lidar_obstacle_detection/lidar_obstacle_detection.cpp
+    src/lidar_obstacle_detection/lidar_obstacle_detection_node.cpp
 )
 target_link_libraries(lidar_obstacle_detection_node ${catkin_LIBRARIES})

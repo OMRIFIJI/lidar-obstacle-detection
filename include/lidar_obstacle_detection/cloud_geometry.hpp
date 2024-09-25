@@ -5,6 +5,8 @@
 #include<pcl/common/distances.h>
 
 namespace cloud_geometry {
+bool is_inside_sector(PointT point, float sector_angle, float sector_radius);
+
 class CloudAngleHandler {
   public:
 	CloudAngleHandler(float angle_thrsh);
