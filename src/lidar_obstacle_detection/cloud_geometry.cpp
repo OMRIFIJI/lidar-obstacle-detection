@@ -3,12 +3,12 @@
 
 namespace cloud_geometry {
 
-CloudAngleHandler::CloudAngleHandler(float &angle_thrsh) { m_angle_thrsh = angle_thrsh; }
+CloudAngleHandler::CloudAngleHandler(float angle_thrsh) { m_angle_thrsh = angle_thrsh; }
 
 void CloudAngleHandler::reset_max_angle() { m_suspect_point_angle_max = 0; }
 
-void CloudAngleHandler::calculate_angle(const PointT &suspect_point,
-										const PointT &neighbour_point) {
+void CloudAngleHandler::calculate_angle(const PointT suspect_point,
+										const PointT neighbour_point) {
 	// Point to form right triangle
 	PointT orthogonal_point = PointT(neighbour_point.x, neighbour_point.y, suspect_point.z);
 	float cathetus1 = pcl::euclideanDistance(suspect_point, orthogonal_point);
@@ -26,13 +26,13 @@ void CloudAngleHandler::calculate_angle(const PointT &suspect_point,
 
 bool CloudAngleHandler::is_above_thrsh() { return m_suspect_point_angle_max > m_angle_thrsh; }
 
-float radius_vec_2d_norm(const PointT &point) {
+float radius_vec_2d_norm(const PointT point) {
 	return sqrt(point.x * point.x + point.y * point.y);
 }
 
-float project_to_x(const PointT &point) { return point.x; }
+float project_to_x(const PointT point) { return point.x; }
 
-bool is_inside_sector(const PointT &point, float &sector_angle, float &sector_radius) {
+bool is_inside_sector(const PointT point, float sector_angle, float sector_radius) {
 	float norm = radius_vec_2d_norm(point);
 	float angle;
 	// Also prevents zero division
