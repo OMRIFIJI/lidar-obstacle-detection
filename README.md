@@ -17,8 +17,9 @@ Rock on the Mars                           |  Segmentated rock
 ![Rock on the Mars](img/rock_on_mars.jpg)  |  ![Segmentated rock](img/segmentation.jpg)
 
 ## Dependencies.
-* Depends on [PCL](https://github.com/PointCloudLibrary/pcl) to work with point clouds
-* Depends on [perception_pcl](https://github.com/ros-perception/perception_pcl) to convert point clouds classes between ROS and PCL
+* Depends on [PCL](https://github.com/PointCloudLibrary/pcl) for point cloud manipulations
+* Depends on [perception_pcl](https://github.com/ros-perception/perception_pcl) for conversions 
+between ROS and PCL point cloud classes
 
 ## Subscribers and publishers.
 * This node subscribes to `velodyne_points` for lidar point cloud.
