@@ -27,4 +27,15 @@ Rock on the Mars                           |  Segmentated rock
 * `avoid_obstacles` publishes `True` if *dangerous_obstacle* cloud is not empty. 
 
 ## Quick start
-* 
+* Clone this repository inside your `catkin_ws`
+* Run `catkin_make` inside you workspace and source it
+* Start your `velodyne_points` node
+* Launch this package with `roslaunch --wait lidar_obstacle_detection obstacle_detection.launch`
+
+## Modifying package
+Current version was made for demonstration purposes.
+If you want to use it to detect obstacles fast in real data.
+You probably want to slice segment of lidar cloud in which
+obstacles are expected and then pass it to `velodyne_points`.
+Thus you can get rid of looking for *dangerous obstacles in sector* which is done
+after searching for obstacles in the entirety of point cloud.
