@@ -12,8 +12,10 @@ ObstacleDetectionNode::ObstacleDetectionNode(ros::NodeHandle node_handle, float 
 	m_obstacle_points->header.frame_id = m_lidar_frame_id;
 	m_dangerous_obstacle_points->header.frame_id = m_lidar_frame_id;
 
-	node_handle.param<float>("/lidar_obstacle_detection_node/obstacle_sector_angle", m_obstacle_sector_angle, 0.523598);
-    node_handle.param<float>("/lidar_obstacle_detection_node/obstacle_sector_radius", m_obstacle_sector_radius, 9);
+	node_handle.param<float>("/lidar_obstacle_detection_node/obstacle_sector_angle",
+							 m_obstacle_sector_angle, 0.523598);
+	node_handle.param<float>("/lidar_obstacle_detection_node/obstacle_sector_radius",
+							 m_obstacle_sector_radius, 9);
 	std::cout << "Param angle thrsh:" << angle_thrsh << std::endl;
 	std::cout << "Param sector angle:" << m_obstacle_sector_angle << std::endl;
 	std::cout << "Param sector radius:" << m_obstacle_sector_radius << std::endl;
@@ -22,11 +24,12 @@ ObstacleDetectionNode::ObstacleDetectionNode(ros::NodeHandle node_handle, float 
 	m_dangerous_obstacle_pub =
 		node_handle.advertise<sensor_msgs::PointCloud2>("dangerous_obstacle_pub", 2);
 	m_avoid_obstacles_pub = node_handle.advertise<std_msgs::Bool>("avoid_obstacles", 2);
-	m_lidar_sub = node_handle.subscribe("velodyne_points", 2,
-									   &ObstacleDetectionNode::m_obstacle_detection_callback, this);
+	m_lidar_sub = node_handle.subscribe(
+		"velodyne_points", 2, &ObstacleDetectionNode::m_obstacle_detection_callback, this);
 }
 
-void ObstacleDetectionNode::m_obstacle_detection_callback(const pcl::PointCloud<PointT> &src_cloud) {
+void ObstacleDetectionNode::m_obstacle_detection_callback(
+	const pcl::PointCloud<PointT> &src_cloud) {
 	pcl::PointCloud<PointT>::ConstPtr src_cloud_shared = src_cloud.makeShared();
 	m_cloud_ts = src_cloud.header.stamp;
 
@@ -57,10 +60,10 @@ void ObstacleDetectionNode::m_find_obstacle_points(pcl::PointCloud<PointT>::Cons
 		// Neighbour search and angles calculations
 		m_cloud_angle_handler.reset_max_angle();
 		if (m_kdtree.radiusSearch(obstacle_suspect, radius, m_pointIdxRadiusSearch,
-								 m_pointRadiusSquaredDistance) > 0) {
+								  m_pointRadiusSquaredDistance) > 0) {
 			for (std::size_t i = 0; i < m_pointIdxRadiusSearch.size(); i++) {
 				m_cloud_angle_handler.calculate_angle(obstacle_suspect,
-													 src_cloud->points[m_pointIdxRadiusSearch[i]]);
+													  src_cloud->points[m_pointIdxRadiusSearch[i]]);
 			}
 		}
 
