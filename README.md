@@ -29,7 +29,7 @@ between ROS and PCL point cloud classes
 
 ## Quick start
 * Clone this repository inside your `catkin_ws`
-* Run `catkin_make` inside you workspace then source it
+* Run `catkin_make` inside your workspace then source it
 * Start your `velodyne_points` node
 * Launch this package with `roslaunch --wait lidar_obstacle_detection obstacle_detection.launch`
 
