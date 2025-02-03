@@ -12,9 +12,10 @@ In the launch file you can define:
 * angle of sector in which obstacles will be called *dangerous* `obstacle_sector_angle`
 * radius of sector in which obstacles will be called *dangerous* `obstacle_sector_radius`
 
-Rock on the Mars                           |  Segmentated rock
-:-----------------------------------------:|:-----------------------------------------:
-![Rock on the Mars](img/rock_on_mars.jpg)  |  ![Segmentated rock](img/segmentation.jpg)
+Rock on the Mars                                                                                     |  Segmented rock
+:---------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------:
+![Rock on the Mars](https://github.com/user-attachments/assets/72dad9b5-9377-4118-a258-15085c2e03bd) |  ![Segmented rock](https://github.com/user-attachments/assets/f4dce6fe-5031-436b-932b-1a591a3e7606)
+
 
 ## Dependencies.
 * Depends on [PCL](https://github.com/PointCloudLibrary/pcl) for point cloud manipulations
