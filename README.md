@@ -34,7 +34,7 @@ between ROS and PCL point cloud classes
 * Start your `velodyne_points` node
 * Launch this package with `roslaunch --wait lidar_obstacle_detection obstacle_detection.launch`
 
-## Modifying package
+## Package optimization
 Current version was made for demonstration purposes.
 If you want to use it to detect obstacles fast in real data.
 You probably want to slice segment of lidar cloud in which
